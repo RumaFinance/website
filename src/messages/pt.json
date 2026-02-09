@@ -1,0 +1,29 @@
+{
+  "hero": {
+    "title": "Sua porta de entrada para um mundo de possibilidades",
+    "subtitle": "A carteira Ethereum mais fácil de usar para LATAM. Simples, segura e projetada para todos.",
+    "cta": "Baixar App"
+  },
+  "demo": {
+    "title": "Interface Simples",
+    "subtitle": "UI similar a bancos sem a complexidade",
+    "features": {
+      "onboarding": {
+        "title": "Integração Fácil",
+        "description": "Orientação clara para iniciantes em crypto com interface familiar estilo bancário"
+      },
+      "backup": {
+        "title": "Backup Seguro",
+        "description": "Faça backup da sua frase semente com segurança no Google Drive - familiar e acessível"
+      },
+      "simple": {
+        "title": "Sem Complexidade",
+        "description": "Sem listas confusas de tokens ou troca de chains. Apenas transações simples e seguras"
+      },
+      "latam": {
+        "title": "Feito para LATAM",
+        "description": "Projetado especificamente para países crypto-agnósticos com necessidades locais em mente"
+      }
+    }
+  }
+}

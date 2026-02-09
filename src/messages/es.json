@@ -1,0 +1,29 @@
+{
+  "hero": {
+    "title": "Tu puerta de entrada a un mundo de posibilidades",
+    "subtitle": "La billetera Ethereum más fácil de usar para LATAM. Simple, segura y diseñada para todos.",
+    "cta": "Descargar App"
+  },
+  "demo": {
+    "title": "Interfaz Simple",
+    "subtitle": "UI similar a bancos sin la complejidad",
+    "features": {
+      "onboarding": {
+        "title": "Incorporación Fácil",
+        "description": "Guía clara para principiantes en crypto con interfaz familiar estilo bancario"
+      },
+      "backup": {
+        "title": "Respaldo Seguro",
+        "description": "Respalda tu frase semilla de forma segura con Google Drive - familiar y accesible"
+      },
+      "simple": {
+        "title": "Sin Complejidad",
+        "description": "Sin listas confusas de tokens o cambio de cadenas. Solo transacciones simples y seguras"
+      },
+      "latam": {
+        "title": "Hecho para LATAM",
+        "description": "Diseñado específicamente para países crypto-agnósticos con necesidades locales en mente"
+      }
+    }
+  }
+}

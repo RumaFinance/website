@@ -1,0 +1,47 @@
+{
+  "hero": {
+    "title": "Your gateway to a world of possibilities",
+    "subtitle": "The easiest to use Ethereum wallet for LATAM. Simple, secure, and designed for everyone.",
+    "cta": "Download App"
+  },
+  "demo": {
+    "title": "Simple Interface",
+    "subtitle": "Bank-like UI without the complexity",
+    "features": {
+      "download": {
+        "title": "Download Ruma",
+        "description": "Available now on Chrome, Brave and Edge so you can start whenever you want, wherever you want."
+      },
+      "setup": {
+        "title": "Set up your account",
+        "description": "Simple and secure onboarding with clear guidance every step of the way"
+      },
+      "enjoy": {
+        "title": "Enjoy true ownership",
+        "description": "Your keys, your crypto. Self-custody without sacrificing user experience."
+      }
+    }
+  },
+  "features": {
+    "title": "Features",
+    "subtitle": "Bank-like UI for new crypto users",
+    "features": {
+      "onboarding": {
+        "title": "Easy Onboarding",
+        "description": "Clear guidance for crypto newcomers with familiar banking-style interface"
+      },
+      "backup": {
+        "title": "Secure Backup",
+        "description": "Backup your seed phrase securely with Google Drive - familiar and accessible"
+      },
+      "simple": {
+        "title": "No Complexity",
+        "description": "No confusing token lists or chain switching. Just simple, secure transactions"
+      },
+      "latam": {
+        "title": "Built for LATAM",
+        "description": "Designed specifically for crypto-agnostic countries with local needs in mind"
+      }
+    }
+  }
+}
