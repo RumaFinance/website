@@ -11,22 +11,21 @@ export const metadata: Metadata = {
 
 export default async function LocaleLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
   const messages = await getMessages();
 
   return (
     <html lang={locale}>
       <body>
         <NextIntlClientProvider messages={messages}>
-          {/* Header with Language Selector */}
           <header className="fixed top-0 right-0 z-50 p-6">
             <LanguageSelector currentLocale={locale} />
           </header>
-
           {children}
         </NextIntlClientProvider>
       </body>
