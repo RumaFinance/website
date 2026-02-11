@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations } from "@/context/translations/TranslationsContext";
 import { motion } from "framer-motion";
 
 export default function Hero() {

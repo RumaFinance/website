@@ -1,9 +1,10 @@
 "use client";
 
-import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import ScrollFadeSection from "./ScrollFadeSection";
+import { useTranslations } from "@/context/translations/TranslationsContext";
 
 const demoScreenshots = [
   "/screenshots/download.png",
@@ -116,9 +117,9 @@ export default function ProductDemo() {
                 transition={{ duration: 0.6 }}
                 className="relative"
               >
-                <div className="w-80 h-[600px] bg-primary rounded-3xl p-4 shadow-2xl">
+                <div className="w-80 h-150 bg-primary rounded-3xl p-4 shadow-2xl">
                   <div className="w-full h-full bg-secondary rounded-2xl overflow-hidden">
-                    <img
+                    <Image
                       src={demoScreenshots[currentScreenshot]}
                       alt={`Demo screenshot ${currentScreenshot + 1}`}
                       className="w-full h-full object-cover"
@@ -129,6 +130,7 @@ width="320" height="568" viewBox="0 0 320 568"><rect width="320" height="568" fi
 x="160" y="284" text-anchor="middle" font-family="Arial" font-size="16" fill="%23666">Screenshot
 ${currentScreenshot + 1}</text></svg>`;
                       }}
+                      fill
                     />
                   </div>
                 </div>

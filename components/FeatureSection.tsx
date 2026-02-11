@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import ScrollFadeSection from "./ScrollFadeSection";
-import { useTranslations } from "next-intl";
+import { useTranslations } from "@/context/translations/TranslationsContext";
 
 interface Feature {
   title: string;

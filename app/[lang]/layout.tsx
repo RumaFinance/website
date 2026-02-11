@@ -1,33 +1,33 @@
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
 import LanguageSelector from "@/components/LanguageSelector";
 import "../globals.css";
 import { Metadata } from "next";
+import { getDictionary } from "./dictionaries";
+import { TranslationsProvider } from "@/context/translations/TranslationsContext";
 
 export const metadata: Metadata = {
   title: "Ruma - Easy crypto wallet",
   description: "Self-custody Ethereum wallet",
 };
 
-export default async function LocaleLayout({
+export default async function RootLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: PageProps<'/[lang]'>
 }) {
-  const { locale } = await params;
-  const messages = await getMessages();
+  const { lang } = await params;
+  const dictionary = await getDictionary(lang);
 
   return (
-    <html lang={locale}>
+    <html lang={lang}>
       <body>
-        <NextIntlClientProvider messages={messages}>
+        <TranslationsProvider dictionary={dictionary}>
           <header className="fixed top-0 right-0 z-50 p-6">
-            <LanguageSelector currentLocale={locale} />
+            <LanguageSelector currentLocale={lang} />
           </header>
           {children}
-        </NextIntlClientProvider>
+        </TranslationsProvider>
       </body>
     </html>
   );
