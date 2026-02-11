@@ -35,9 +35,7 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Skip all internal paths (_next)
-    '/((?!_next).*)',
-    // Optional: only run on root (/) URL
-    // '/'
-  ],
+      // Skip all internal paths (_next, api, static files)
+      '/((?!_next|api|favicon.ico|.*\\.).*)',
+    ],
 }
