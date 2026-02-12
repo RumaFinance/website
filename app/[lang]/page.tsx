@@ -4,7 +4,7 @@ import FeatureSection from "@/components/FeatureSection";
 
 export default function HomePage() {
   return (
-    <main className="overflow-x-hidden">
+    <main className="overflow-x-hidden overflow-y-visible">
       <Hero />
 
       <ProductDemo />

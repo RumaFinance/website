@@ -42,7 +42,7 @@ export default function FeatureSection() {
 
   return (
     <ScrollFadeSection>
-      <section className={`py-24 bg-background`}>
+      <section className={`py-24 bg-background h-[2000px]`}>
         <div className="max-w-7xl mx-auto px-6">
           {/* Header */}
           <div className="text-center mb-16">
