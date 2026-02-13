@@ -1,8 +1,9 @@
 {
   "hero": {
-    "title": "Your gateway to a world of possibilities",
-    "subtitle": "The easiest to use Ethereum wallet for LATAM. Simple, secure, and designed for everyone.",
-    "cta": "Download App"
+    "title": "Your way in to the crypto world",
+    "subtitle": "The easiest to use crypto wallet. Simple, secure, and designed for everyone.",
+    "cta": "Subscribe",
+    "cta-placeholder": "Get the news first"
   },
   "demo": {
     "title": "Simple Interface",

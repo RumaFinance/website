@@ -24,7 +24,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-text-secondary mb-12 max-w-2xl leading-relaxed text-center mx-auto lg:text-left"
+            className="text-xl md:text-2xl text-text-secondary mb-12 leading-relaxed text-center mx-auto lg:text-left"
           >
             {t("subtitle")}
           </motion.p>
@@ -35,14 +35,21 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-6 justify-center items-center lg:justify-start lg:items-start"
           >
-            <button className="bg-primary text-secondary px-8 py-4 rounded-full text-lg font-semibold hover:bg-accent transition-all duration-300 transform hover:scale-105">
-              {t("cta")}
+            <input
+              autoComplete="email"
+              id="email"
+              name="email"
+              placeholder="example@email.com"
+              className="bg-[#e2e8f0]/50 rounded-lg shadow-md py-4 px-6 skeuomorphic-input"
+            />
+            <button className="hero-button translate-y-1">
+              <div><span>{t("cta")}</span></div>
             </button>
           </motion.div>
         </div>
 
         {/* Right side - Image Background */}
-        <div className="relative block">
+        <div className="relative block my-14">
           <div
             className="absolute inset-0 bg-center bg-contain bg-no-repeat"
             style={{ backgroundImage: "url('/hero.png')" }}

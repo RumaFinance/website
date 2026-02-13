@@ -1,8 +1,9 @@
 {
   "hero": {
-    "title": "Tu puerta de entrada a un mundo de posibilidades",
-    "subtitle": "La billetera Ethereum más fácil de usar para LATAM. Simple, segura y diseñada para todos.",
-    "cta": "Descargar App"
+    "title": "Tu camino de entrada a cripto",
+    "subtitle": "La billetera Ethereum más fácil de usar. Simple, segura y diseñada para todos.",
+    "cta": "Suscribirse",
+    "cta-placeholder": "Recibe noticias primero"
   },
   "demo": {
     "title": "Interfaz Simple",
