@@ -6,12 +6,6 @@ export default function HomePage() {
   return (
     <main className="overflow-x-hidden overflow-y-visible">
       <Hero />
-
-      <ProductDemo />
-
-      <FeatureSection />
-
-      {/* Call to Action Section */}
     </main>
   );
 }

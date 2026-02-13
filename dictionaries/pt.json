@@ -1,8 +1,9 @@
 {
   "hero": {
-    "title": "Sua porta de entrada para um mundo de possibilidades",
-    "subtitle": "A carteira Ethereum mais fácil de usar para LATAM. Simples, segura e projetada para todos.",
-    "cta": "Baixar App"
+    "title": "Sua entrada para um mundo cripto",
+    "subtitle": "A carteira Ethereum mais fácil de usar. Simples, segura e projetada para todos.",
+    "cta": "Assine",
+    "cta-placeholder": "Receba as notícias primeiro"
   },
   "demo": {
     "title": "Interface Simples",
