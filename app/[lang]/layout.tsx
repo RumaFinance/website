@@ -4,10 +4,19 @@ import { Metadata } from "next";
 import { getDictionary } from "./dictionaries";
 import { TranslationsProvider } from "@/context/translations/TranslationsContext";
 
-export const metadata: Metadata = {
-  title: "Ruma - Simple crypto wallet",
-  description: "The easiest self-custody crypto wallet",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: PageProps<'/[lang]'>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  const dictionary = await getDictionary(lang);
+
+  return {
+    title: dictionary.metadata.title,
+    description: dictionary.metadata.description,
+  };
+}
 
 export default async function RootLayout({
   children,
