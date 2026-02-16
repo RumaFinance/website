@@ -1,6 +1,12 @@
 "use client";
 
-import { motion, useScroll, useTransform, MotionValue, useSpring } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  MotionValue,
+  useSpring,
+} from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
 import { useTranslations } from "@/context/translations/TranslationsContext";
@@ -13,7 +19,6 @@ function useParallax(value: MotionValue<number>, distance: number) {
 
 export default function ProductDemo() {
   const t = useTranslations("demo");
-
 
   return (
     <section>
@@ -45,22 +50,16 @@ function ParallaxSlide({ image, title, description }: ParallaxSlideProps) {
   const y = useParallax(scrollYProgress, 300);
 
   return (
-    <div
-      className="h-screen flex justify-center items-center relative img-container"
-    >
-      <div
-        ref={ref}
-        className="overflow-hidden"
-      >
-        <Image
-          src={image}
-          alt={title}
-          width={200}
-          height={600}
-        />
+    <div className="h-screen flex justify-center items-center relative img-container">
+      <div ref={ref} className="overflow-hidden">
+        <Image src={image} alt={title} width={200} height={600} />
 
-        <motion.div style={{ y }} className="absolute max-w-md top-[calc(50% - 25px)] left-[calc(50% + 120px)]" initial={{ visibility: "hidden" }}
-        animate={{ visibility: "visible" }}>
+        <motion.div
+          style={{ y }}
+          className="absolute max-w-md top-[calc(50% - 25px)] left-[calc(50% + 120px)]"
+          initial={{ visibility: "hidden" }}
+          animate={{ visibility: "visible" }}
+        >
           <h2 className="text-4xl font-semibold mb-4">{title}</h2>
           <p className="text-lg opacity-80">{description}</p>
         </motion.div>
