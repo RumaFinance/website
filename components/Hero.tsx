@@ -4,7 +4,7 @@ import { useTranslations } from "@/context/translations/TranslationsContext";
 import { getUserLocation, submitToNotion } from "@/lib/notion";
 import { motion } from "framer-motion";
 
-export default function Hero() {
+export default function Hero({ lang }: { lang: string }) {
   const t = useTranslations("hero");
 
   return (
@@ -40,8 +40,8 @@ export default function Hero() {
               onSubmit={async (e) => {
                 e.preventDefault();
                 const email = (e.target as HTMLFormElement).email.value;
-                const { language, country } = await getUserLocation();
-                await submitToNotion({ email, language, country });
+                const { country } = await getUserLocation();
+                await submitToNotion({ email, language: lang, country });
                 alert(t("thank_you"));
               }}
               className="flex flex-col sm:flex-row gap-6"

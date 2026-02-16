@@ -25,7 +25,6 @@ export async function submitToNotion(data: NotionData): Promise<void> {
 }
 
 export async function getUserLocation(): Promise<{
-  language: string;
   country: string;
 }> {
   try {
@@ -39,13 +38,11 @@ export async function getUserLocation(): Promise<{
     const geoData = await geoResponse.json();
 
     return {
-      language: geoData.languages?.[0] || "en",
       country: geoData.country_name || "Unknown",
     };
   } catch (error) {
     console.error("Error getting user location:", error);
     return {
-      language: "en",
       country: "Unknown",
     };
   }
