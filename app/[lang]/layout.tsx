@@ -5,8 +5,8 @@ import { getDictionary } from "./dictionaries";
 import { TranslationsProvider } from "@/context/translations/TranslationsContext";
 
 export const metadata: Metadata = {
-  title: "Ruma - Easy crypto wallet",
-  description: "Self-custody Ethereum wallet",
+  title: "Ruma - Simple crypto wallet",
+  description: "The easiest self-custody crypto wallet",
 };
 
 export default async function RootLayout({
