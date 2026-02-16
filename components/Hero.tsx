@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "@/context/translations/TranslationsContext";
+import { getUserLocation, submitToNotion } from "@/lib/notion";
 import { motion } from "framer-motion";
 
 export default function Hero() {
@@ -35,16 +36,31 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-6 justify-center items-center lg:justify-start lg:items-start"
           >
-            <input
-              autoComplete="email"
-              id="email"
-              name="email"
-              placeholder="example@email.com"
-              className="bg-[#e2e8f0]/50 rounded-lg shadow-md py-4 px-6 skeuomorphic-input"
-            />
-            <button className="hero-button translate-y-1">
-              <div><span>{t("cta")}</span></div>
-            </button>
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                const email = (e.target as HTMLFormElement).email.value;
+                const { language, country } = await getUserLocation();
+                await submitToNotion({ email, language, country });
+                alert(t("thank_you"));
+              }}
+              className="flex flex-col sm:flex-row gap-6"
+            >
+              <input
+                autoComplete="email"
+                id="email"
+                name="email"
+                type="email"
+                required
+                placeholder="example@email.com"
+                className="bg-[#e2e8f0]/50 rounded-lg shadow-md py-4 px-6 skeuomorphic-input"
+              />
+              <button type="submit" className="hero-button translate-y-1">
+                <div>
+                  <span>{t("cta")}</span>
+                </div>
+              </button>
+            </form>
           </motion.div>
         </div>
 

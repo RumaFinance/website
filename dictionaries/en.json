@@ -2,8 +2,9 @@
   "hero": {
     "title": "Your way in to the crypto world",
     "subtitle": "The easiest to use crypto wallet. Simple, secure, and designed for everyone.",
-    "cta": "Subscribe",
-    "cta-placeholder": "Get the news first"
+
+    "cta": "Get the news first",
+    "thank_you": "Thank you for signing up!"
   },
   "demo": {
     "title": "Simple Interface",
