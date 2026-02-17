@@ -1,8 +1,12 @@
 {
+  "metadata": {
+    "title": "Ruma - Billetera cripto simple",
+    "description": "La billetera de autocustodia cripto más fácil"
+  },
   "hero": {
     "title": "Tu camino de entrada a cripto",
     "subtitle": "La billetera Ethereum más fácil de usar. Simple, segura y diseñada para todos.",
-    "cta": "Suscribirse",
+    "cta": "Obtener noticias primero",
     "cta-placeholder": "Recibe noticias primero"
   },
   "demo": {
