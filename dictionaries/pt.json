@@ -4,32 +4,20 @@
     "description": "A carteira cripto com autocustódia mais fácil de usar"
   },
   "hero": {
-    "title": "Sua entrada para um mundo cripto",
-    "subtitle": "A carteira Ethereum mais fácil de usar. Simples, segura e projetada para todos.",
-    "cta": "Receba as notícias primeiro",
-    "cta-placeholder": "Receba as notícias primeiro",
-    "thank_you": "Obrigado por se inscrever!"
-  },
-  "demo": {
-    "title": "Interface Simples",
-    "subtitle": "UI similar a bancos sem a complexidade",
-    "features": {
-      "onboarding": {
-        "title": "Integração Fácil",
-        "description": "Orientação clara para iniciantes em crypto com interface familiar estilo bancário"
-      },
-      "backup": {
-        "title": "Backup Seguro",
-        "description": "Faça backup da sua frase semente com segurança no Google Drive - familiar e acessível"
-      },
-      "simple": {
-        "title": "Sem Complexidade",
-        "description": "Sem listas confusas de tokens ou troca de chains. Apenas transações simples e seguras"
-      },
-      "latam": {
-        "title": "Feito para LATAM",
-        "description": "Projetado especificamente para países crypto-agnósticos com necessidades locais em mente"
-      }
+    "1": {
+      "title": "Sabemos que isso pode ser difícil",
+      "subtitle": "Cripto, blockchain, web3, autocustódia. Todos esses termos são novos e parecem muito diferentes dos serviços bancários tradicionais, e são!"
+    },
+    "2": {
+      "title": "Você precisa de uma maneira simples",
+      "subtitle": "É por isso que criamos o Ruma, para que você possa aproveitar as vantagens deste sistema monetário muito mais eficiente."
+    },
+    "3": {
+      "title": "Sua entrada para um mundo cripto",
+      "subtitle": "A carteira Ethereum mais fácil de usar. Simples, segura e projetada para todos.",
+      "cta": "Receba as notícias primeiro",
+      "cta-placeholder": "Receba as notícias primeiro",
+      "thank_you": "Obrigado por se inscrever!"
     }
   }
 }
