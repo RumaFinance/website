@@ -1,4 +1,8 @@
 {
+  "metadata": {
+    "title": "Ruma - Carteira cripto simples",
+    "description": "A carteira cripto com autocustódia mais fácil de usar"
+  },
   "hero": {
     "title": "Sua entrada para um mundo cripto",
     "subtitle": "A carteira Ethereum mais fácil de usar. Simples, segura e projetada para todos.",

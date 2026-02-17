@@ -1,4 +1,8 @@
 {
+  "metadata": {
+    "title": "Ruma - Simple crypto wallet",
+    "description": "The easiest self-custody crypto wallet"
+  },
   "hero": {
     "title": "Your way in to the crypto world",
     "subtitle": "The easiest to use crypto wallet. Simple, secure, and designed for everyone.",
