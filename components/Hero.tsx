@@ -165,9 +165,9 @@ xl:px-16"
               type="email"
               required
               placeholder="example@email.com"
-              className="bg-gray-50 rounded-lg shadow-md py-4 px-6 skeuomorphic-input"
+              className="bg-gray-50 rounded-lg shadow-md border-2 border-gray-500 py-4 px-6 skeuomorphic-input"
             />
-            <button type="submit" className="hero-button translate-y-1">
+            <button type="submit" className="hero-button">
               <div>
                 <span>{dictionary.cta}</span>
               </div>
@@ -187,12 +187,12 @@ export default function Hero({ lang }: { lang: string }) {
       <Slide
         title={t("1").title}
         description={t("1").subtitle}
-        backgroundImage="/hero-1.png"
+        backgroundImage="hero-1.png"
       />
       <Slide
         title={t("2").title}
         description={t("2").subtitle}
-        backgroundImage="/hero-2.png"
+        backgroundImage="hero-2.png"
       />
       <LastSlide dictionary={t("3")} lang={lang} />
     </section>

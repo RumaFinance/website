@@ -38,12 +38,6 @@ body {
   font-size: clamp(2rem, 5vw, 4rem);
 }
 
-.skeuomorphic-input {
-  box-shadow: var(--shadow-inner), var(--shadow);
-  border: 1px solid var(--border);
-  border-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));
-}
-
 .hero-button {
   --stone-50: #fafaf9;
   --stone-800: #292524;
