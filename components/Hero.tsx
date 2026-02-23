@@ -24,7 +24,6 @@ function useParallax(value: MotionValue<number>, distance: number) {
 
 function Slide({ title, description, backgroundImage }: SlideProps) {
   const ref = useRef<HTMLDivElement | null>(null);
-
   const { scrollYProgress } = useScroll({
     target: ref,
   });
@@ -32,22 +31,32 @@ function Slide({ title, description, backgroundImage }: SlideProps) {
   const y = useParallax(scrollYProgress, 100);
 
   return (
-    <div className="h-screen flex justify-center items-center relative img-container">
-      {/* Background image for this slide */}
+    <div className="h-screen flex justify-center items-center relative img-container lg:flex lg:justify-center lg:items-center">
+      {/* Background image for this slide - mobile version */}
       <div
-        className="absolute inset-0 bg-center bg-cover bg-no-repeat"
+        className="absolute inset-0 bg-center bg-cover bg-no-repeat lg:hidden"
+        style={{ backgroundImage: `url('/mobile-${backgroundImage}')` }}
+      />
+
+      {/* Desktop background image */}
+      <div
+        className="absolute inset-0 bg-center bg-cover bg-no-repeat hidden lg:block"
         style={{ backgroundImage: `url('${backgroundImage}')` }}
       />
 
       <div ref={ref} className="overflow-hidden">
         <motion.div
           style={{ y }}
-          className="absolute max-w-md top-[calc(50% - 25px)] left-[calc(50% + 120px)]"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:translate-x-0 lg:translate-y-0 max-w-md lg:top-[calc(50% - 25px)] lg:left-[calc(50% + 120px)]"
           initial={{ visibility: "hidden" }}
           animate={{ visibility: "visible" }}
         >
-          <h2 className="text-6xl font-bold mb-4">{title}</h2>
-          <p className="text-lg opacity-80">{description}</p>
+          <h2 className="text-4xl font-bold mb-4 text-center lg:text-6xl lg:text-left lg:font-bold lg:mb-4">
+            {title}
+          </h2>
+          <p className="text-lg opacity-80 text-center lg:text-lg lg:opacity-80 lg:text-left">
+            {description}
+          </p>
         </motion.div>
       </div>
     </div>
@@ -74,7 +83,7 @@ function LastSlide({ lang, dictionary }: { lang: string; dictionary: any }) {
         {[1, 2, 3, 4, 5].map((num, index) => (
           <motion.div
             key={num}
-            className="absolute top-1/2 left-1/2 z-20"
+            className="absolute top-1/2 left-1/2 z-10"
             initial={{
               x: "-50%",
               y: "-50%",
@@ -119,7 +128,7 @@ xl:px-16"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-display text-hero mb-8 leading-tight text-center"
+          className="text-display text-hero mb-8 leading-tight text-center text-shadow-lg text-shadow-white"
         >
           {dictionary.title}
         </motion.h1>
