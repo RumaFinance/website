@@ -9,19 +9,20 @@ import {
   useTransform,
   useInView,
 } from "motion/react";
-import { Ref, useRef } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 
 interface SlideProps {
   title: string;
   description: string;
+  backgroundImage: string;
 }
 
 function useParallax(value: MotionValue<number>, distance: number) {
   return useTransform(value, [0, 1], [-distance, distance]);
 }
 
-function Slide({ title, description }: SlideProps) {
+function Slide({ title, description, backgroundImage }: SlideProps) {
   const ref = useRef<HTMLDivElement | null>(null);
 
   const { scrollYProgress } = useScroll({
@@ -31,7 +32,13 @@ function Slide({ title, description }: SlideProps) {
   const y = useParallax(scrollYProgress, 100);
 
   return (
-    <div className="z-10 h-screen flex justify-center items-center relative img-container">
+    <div className="h-screen flex justify-center items-center relative img-container">
+      {/* Background image for this slide */}
+      <div
+        className="absolute inset-0 bg-center bg-cover bg-no-repeat"
+        style={{ backgroundImage: `url('${backgroundImage}')` }}
+      />
+
       <div ref={ref} className="overflow-hidden">
         <motion.div
           style={{ y }}
@@ -53,11 +60,11 @@ function LastSlide({ lang, dictionary }: { lang: string; dictionary: any }) {
 
   // Define positions and sizes for each feature image
   const featureAnimations = [
-    { x: "-40vw", y: "-30vh", scale: 0.8, rotate: -15 }, // Top left
-    { x: "35vw", y: "-35vh", scale: 1.2, rotate: 10 }, // Top right
-    { x: "-45vw", y: "25vh", scale: 1.0, rotate: 5 }, // Bottom left
-    { x: "40vw", y: "30vh", scale: 0.9, rotate: -10 }, // Bottom right
-    { x: "0vw", y: "-40vh", scale: 0.7, rotate: 0 }, // Top center
+    { x: "-40vw", y: "-30vh", scale: 1.3, rotate: -15 }, // Top left
+    { x: "35vw", y: "-35vh", scale: 1.3, rotate: 10 }, // Top right
+    { x: "-35vw", y: "25vh", scale: 1.5, rotate: 5 }, // Bottom left
+    { x: "38vw", y: "30vh", scale: 1.8, rotate: -10 }, // Bottom right
+    { x: "0vw", y: "-40vh", scale: 1.1, rotate: 0 }, // Top center
   ];
 
   return (
@@ -67,7 +74,7 @@ function LastSlide({ lang, dictionary }: { lang: string; dictionary: any }) {
         {[1, 2, 3, 4, 5].map((num, index) => (
           <motion.div
             key={num}
-            className="absolute top-1/2 left-1/2 z-10"
+            className="absolute top-1/2 left-1/2 z-20"
             initial={{
               x: "-50%",
               y: "-50%",
@@ -97,7 +104,7 @@ function LastSlide({ lang, dictionary }: { lang: string; dictionary: any }) {
               alt={`Feature ${num}`}
               width={200}
               height={200}
-              className="rounded-lg shadow-lg"
+              className="shadow-lg"
             />
           </motion.div>
         ))}
@@ -168,18 +175,17 @@ export default function Hero({ lang }: { lang: string }) {
 
   return (
     <section>
-      {["1", "2"].map((heroSectionNumber) => (
-        <Slide
-          key={heroSectionNumber}
-          title={t(`${heroSectionNumber}`).title}
-          description={t(`${heroSectionNumber}`).subtitle}
-        />
-      ))}
-      <LastSlide dictionary={t("3")} lang={lang} />
-      <div
-        className="absolute inset-0 bottom-[-200vh] bg-center bg-contain bg-no-repeat"
-        style={{ backgroundImage: "url('/hero.png')" }}
+      <Slide
+        title={t("1").title}
+        description={t("1").subtitle}
+        backgroundImage="/hero-1.png"
       />
+      <Slide
+        title={t("2").title}
+        description={t("2").subtitle}
+        backgroundImage="/hero-2.png"
+      />
+      <LastSlide dictionary={t("3")} lang={lang} />
     </section>
   );
 }
