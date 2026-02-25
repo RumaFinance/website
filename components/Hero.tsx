@@ -192,17 +192,17 @@ export default function Hero({ lang }: { lang: string }) {
         style={{
           top: useTransform(scrollY, [0, 300], ["0px", "24px"]),
           left: useTransform(scrollY, [0, 300], ["0px", "24px"]),
-          x: useTransform(scrollY, [0, 300], [`calc(53vw)`, "0vw"]),
+          x: useTransform(scrollY, [0, 300], [`calc(61vw)`, "0vw"]),
           y: useTransform(scrollY, [0, 300], [`calc(35vh)`, "0vh"]),
           scale: useTransform(scrollY, [0, 300], [3, 1]),
         }}
       >
         <Image
-          src="/icon.svg"
+          src="/logo-full.svg"
           alt="Logo"
           width={48}
           height={48}
-          className="w-12 h-12"
+          className="h-12 w-auto"
         />
       </motion.div>
 
