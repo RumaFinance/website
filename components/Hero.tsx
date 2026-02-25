@@ -181,20 +181,44 @@ xl:px-16"
 
 export default function Hero({ lang }: { lang: string }) {
   const t = useTranslations("hero");
+  const logoRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
 
   return (
-    <section>
-      <Slide
-        title={t("1").title}
-        description={t("1").subtitle}
-        backgroundImage="hero-1.png"
-      />
-      <Slide
-        title={t("2").title}
-        description={t("2").subtitle}
-        backgroundImage="hero-2.png"
-      />
-      <LastSlide dictionary={t("3")} lang={lang} />
-    </section>
+    <>
+      <motion.div
+        ref={logoRef}
+        className="fixed z-50 hidden lg:block"
+        style={{
+          top: useTransform(scrollY, [0, 300], ["0px", "24px"]),
+          left: useTransform(scrollY, [0, 300], ["0px", "24px"]),
+          x: useTransform(scrollY, [0, 300], [`calc(53vw)`, "0vw"]),
+          y: useTransform(scrollY, [0, 300], [`calc(35vh)`, "0vh"]),
+          scale: useTransform(scrollY, [0, 300], [3, 1]),
+        }}
+      >
+        <Image
+          src="/icon.svg"
+          alt="Logo"
+          width={48}
+          height={48}
+          className="w-12 h-12"
+        />
+      </motion.div>
+
+      <section>
+        <Slide
+          title={t("1").title}
+          description={t("1").subtitle}
+          backgroundImage="hero-1.png"
+        />
+        <Slide
+          title={t("2").title}
+          description={t("2").subtitle}
+          backgroundImage="hero-2.png"
+        />
+        <LastSlide dictionary={t("3")} lang={lang} />
+      </section>
+    </>
   );
 }
