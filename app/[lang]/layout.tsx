@@ -37,11 +37,11 @@ export default async function RootLayout({
           <TranslationsProvider dictionary={dictionary}>
             <header className="fixed top-0 z-50 p-6 flex justify-between lg:justify-end left-0 lg:right-0 w-full">
               <Image
-                src="/icon.svg"
+                src="/logo-full.svg"
                 alt="Logo"
                 width={48}
                 height={48}
-                className="w-12 h-12 lg:hidden"
+                className="w-auto h-12 lg:hidden"
               />
               <LanguageSelector currentLocale={lang} />
             </header>

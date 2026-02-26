@@ -69,10 +69,10 @@ function LastSlide({ lang, dictionary }: { lang: string; dictionary: any }) {
 
   // Define positions and sizes for each feature image
   const featureAnimations = [
-    { x: "-40vw", y: "-45vh", scale: 1.3, rotate: -15 }, // Top left
-    { x: "35vw", y: "-55vh", scale: 1.3, rotate: 10 }, // Top right
+    { x: "-30vw", y: "-35vh", scale: 1.3, rotate: -15 }, // Top left
+    { x: "35vw", y: "-35vh", scale: 1.3, rotate: 10 }, // Top right
     { x: "-35vw", y: "25vh", scale: 1.5, rotate: 5 }, // Bottom left
-    { x: "38vw", y: "30vh", scale: 1.8, rotate: -10 }, // Bottom right
+    { x: "40vw", y: "40vh", scale: 1.8, rotate: -10 }, // Bottom right
     { x: "0vw", y: "-40vh", scale: 1.1, rotate: 0 }, // Top center
   ];
 
@@ -83,7 +83,7 @@ function LastSlide({ lang, dictionary }: { lang: string; dictionary: any }) {
         {[1, 2, 3, 4, 5].map((num, index) => (
           <motion.div
             key={num}
-            className="absolute top-1/2 left-1/2 z-10"
+            className="absolute top-1/2 left-1/2 z-10 p-10"
             initial={{
               x: "-50%",
               y: "-50%",
@@ -121,7 +121,7 @@ function LastSlide({ lang, dictionary }: { lang: string; dictionary: any }) {
 
       {/* Content */}
       <div
-        className="relative z-10 h-full flex flex-col justify-center items-center px-6 lg:px-12
+        className="relative z-10 h-full max-w-[70vw] mx-auto flex flex-col justify-center items-center px-6 lg:px-12
 xl:px-16"
       >
         <motion.h1
