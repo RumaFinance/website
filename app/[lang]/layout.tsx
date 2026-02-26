@@ -12,7 +12,6 @@ export async function generateMetadata({
   params: Promise<{ lang: Locale }>;
 }): Promise<Metadata> {
   const { lang } = await params;
-  console.log("lang at gnerateMetadta is: ", lang)
   const dictionary = await getDictionary(lang);
 
   return {
@@ -26,7 +25,6 @@ export default async function RootLayout({
   params,
 }: LayoutProps<"/[lang]">) {
   const { lang } = await params;
-  console.log("lang at RootLayout is: ", lang)
   const dictionary = await getDictionary(lang as Locale);
 
   return (
