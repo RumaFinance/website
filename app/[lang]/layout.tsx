@@ -1,7 +1,7 @@
 import LanguageSelector from "@/components/LanguageSelector";
 import "../globals.css";
 import { Metadata } from "next";
-import { getDictionary } from "./dictionaries";
+import { getDictionary, Locale } from "./dictionaries";
 import { TranslationsProvider } from "@/context/translations/TranslationsContext";
 import { ReactLenis } from "lenis/react";
 import Image from "next/image";
@@ -9,9 +9,9 @@ import Image from "next/image";
 export async function generateMetadata({
   params,
 }: {
-  params: PageProps<"/[lang]">;
+  params: { lang: Locale };
 }): Promise<Metadata> {
-  const { lang } = await params;
+  const { lang } = params;
   const dictionary = await getDictionary(lang);
 
   return {
@@ -23,19 +23,18 @@ export async function generateMetadata({
 export default async function RootLayout({
   children,
   params,
-}: {
-  children: React.ReactNode;
-  params: PageProps<"/[lang]">;
-}) {
+}: LayoutProps<"/[lang]">) {
   const { lang } = await params;
-  const dictionary = await getDictionary(lang);
+  const dictionary = await getDictionary(lang as Locale);
 
   return (
     <html lang={lang}>
       <body>
         <ReactLenis root>
           <TranslationsProvider dictionary={dictionary}>
-            <header className="fixed top-0 z-50 p-6 flex justify-between lg:justify-end left-0 lg:right-0 w-full">
+            <header
+              className="fixed top-0 z-50 p-6 flex justify-between lg:justify-end left-0 lg:right-0 w-full"
+            >
               <Image
                 src="/logo-full.svg"
                 alt="Logo"

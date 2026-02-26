@@ -62,7 +62,7 @@ function Slide({ title, description, backgroundImage }: SlideProps) {
     </div>
   );
 }
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 function LastSlide({ lang, dictionary }: { lang: string; dictionary: any }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
