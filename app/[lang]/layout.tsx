@@ -9,9 +9,10 @@ import Image from "next/image";
 export async function generateMetadata({
   params,
 }: {
-  params: { lang: Locale };
+  params: Promise<{ lang: Locale }>;
 }): Promise<Metadata> {
-  const { lang } = params;
+  const { lang } = await params;
+  console.log("lang at gnerateMetadta is: ", lang)
   const dictionary = await getDictionary(lang);
 
   return {
@@ -25,6 +26,7 @@ export default async function RootLayout({
   params,
 }: LayoutProps<"/[lang]">) {
   const { lang } = await params;
+  console.log("lang at RootLayout is: ", lang)
   const dictionary = await getDictionary(lang as Locale);
 
   return (
