@@ -1,6 +1,6 @@
 "use client";
-
-import React, { createContext, useContext, ReactNode } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { createContext, useContext, ReactNode } from "react";
 
 type Dictionary = Record<string, any>;
 

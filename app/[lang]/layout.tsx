@@ -32,9 +32,7 @@ export default async function RootLayout({
       <body>
         <ReactLenis root>
           <TranslationsProvider dictionary={dictionary}>
-            <header
-              className="fixed top-0 z-50 p-6 flex justify-between lg:justify-end left-0 lg:right-0 w-full"
-            >
+            <header className="fixed top-0 z-50 p-6 flex justify-between lg:justify-end left-0 lg:right-0 w-full">
               <Image
                 src="/logo-full.svg"
                 alt="Logo"
