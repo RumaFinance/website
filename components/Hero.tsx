@@ -69,8 +69,8 @@ function LastSlide({ lang, dictionary }: { lang: string; dictionary: any }) {
 
   // Define positions and sizes for each feature image
   const featureAnimations = [
-    { x: "-40vw", y: "-30vh", scale: 1.3, rotate: -15 }, // Top left
-    { x: "35vw", y: "-35vh", scale: 1.3, rotate: 10 }, // Top right
+    { x: "-40vw", y: "-45vh", scale: 1.3, rotate: -15 }, // Top left
+    { x: "35vw", y: "-55vh", scale: 1.3, rotate: 10 }, // Top right
     { x: "-35vw", y: "25vh", scale: 1.5, rotate: 5 }, // Bottom left
     { x: "38vw", y: "30vh", scale: 1.8, rotate: -10 }, // Bottom right
     { x: "0vw", y: "-40vh", scale: 1.1, rotate: 0 }, // Top center
