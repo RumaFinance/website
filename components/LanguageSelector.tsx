@@ -30,7 +30,7 @@ export default function LanguageSelector({
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2 bg-surface rounded-full hover:bg-accent transition-colors"
+        className="flex items-center gap-2 px-4 py-2 bg-surface rounded-full hover:bg-accent transition-colors cursor-pointer"
       >
         <span>{currentLang?.flag}</span>
         <span className="font-medium">{currentLang?.code.toUpperCase()}</span>
@@ -50,12 +50,12 @@ export default function LanguageSelector({
       </button>
 
       {isOpen && (
-        <div className="absolute top-full mt-2 right-0 bg-secondary border border-accent rounded-lg shadow-lg overflow-hidden z-50">
+        <div className="absolute top-full mt-2 right-0 bg-secondary border border-accent rounded-lg shadow-lg overflow-hidden z-50 bg-white">
           {languages.map((lang) => (
             <button
               key={lang.code}
               onClick={() => handleLanguageChange(lang.code)}
-              className="w-full px-4 py-3 text-left hover:bg-surface transition-colors flex items-center gap-3"
+              className="w-full px-4 py-3 text-left hover:bg-surface transition-colors flex items-center gap-3 cursor-pointer"
             >
               <span>{lang.flag}</span>
               <span>{lang.name}</span>

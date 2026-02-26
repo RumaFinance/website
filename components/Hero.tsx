@@ -2,76 +2,223 @@
 
 import { useTranslations } from "@/context/translations/TranslationsContext";
 import { getUserLocation, submitToNotion } from "@/lib/notion";
-import { motion } from "framer-motion";
+import {
+  motion,
+  MotionValue,
+  useScroll,
+  useTransform,
+  useInView,
+} from "motion/react";
+import { useRef } from "react";
+import Image from "next/image";
+
+interface SlideProps {
+  title: string;
+  description: string;
+  backgroundImage: string;
+}
+
+function useParallax(value: MotionValue<number>, distance: number) {
+  return useTransform(value, [0, 1], [-distance, distance]);
+}
+
+function Slide({ title, description, backgroundImage }: SlideProps) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+  });
+
+  const y = useParallax(scrollYProgress, 100);
+
+  return (
+    <div className="h-screen flex justify-center items-center relative img-container lg:flex lg:justify-center lg:items-center">
+      {/* Background image for this slide - mobile version */}
+      <div
+        className="absolute inset-0 bg-center bg-cover bg-no-repeat lg:hidden"
+        style={{ backgroundImage: `url('/mobile-${backgroundImage}')` }}
+      />
+
+      {/* Desktop background image */}
+      <div
+        className="absolute inset-0 bg-center bg-cover bg-no-repeat hidden lg:block"
+        style={{ backgroundImage: `url('${backgroundImage}')` }}
+      />
+
+      <div ref={ref} className="overflow-hidden">
+        <motion.div
+          style={{ y }}
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:translate-x-0 lg:translate-y-0 max-w-md lg:top-[calc(50% - 25px)] lg:left-[calc(50% + 120px)]"
+          initial={{ visibility: "hidden" }}
+          animate={{ visibility: "visible" }}
+        >
+          <h2 className="text-4xl font-bold mb-4 text-center lg:text-6xl lg:text-left lg:font-bold lg:mb-4">
+            {title}
+          </h2>
+          <p className="text-lg opacity-80 text-center lg:text-lg lg:opacity-80 lg:text-left">
+            {description}
+          </p>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+function LastSlide({ lang, dictionary }: { lang: string; dictionary: any }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+
+  // Define positions and sizes for each feature image
+  const featureAnimations = [
+    { x: "-30vw", y: "-35vh", scale: 1.3, rotate: -15 }, // Top left
+    { x: "35vw", y: "-35vh", scale: 1.3, rotate: 10 }, // Top right
+    { x: "-35vw", y: "25vh", scale: 1.5, rotate: 5 }, // Bottom left
+    { x: "40vw", y: "40vh", scale: 1.8, rotate: -10 }, // Bottom right
+    { x: "0vw", y: "-40vh", scale: 1.1, rotate: 0 }, // Top center
+  ];
+
+  return (
+    <div ref={ref} className="relative h-screen overflow-hidden">
+      {/* Animated feature images */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[1, 2, 3, 4, 5].map((num, index) => (
+          <motion.div
+            key={num}
+            className="absolute top-1/2 left-1/2 z-10 p-10"
+            initial={{
+              x: "-50%",
+              y: "-50%",
+              scale: 1,
+              rotate: 0,
+              opacity: 1,
+            }}
+            animate={
+              isInView
+                ? {
+                    x: `calc(${featureAnimations[index].x} - 50%)`,
+                    y: `calc(${featureAnimations[index].y} - 50%)`,
+                    scale: featureAnimations[index].scale,
+                    rotate: featureAnimations[index].rotate,
+                    opacity: 1,
+                  }
+                : {}
+            }
+            transition={{
+              duration: 1.2,
+              delay: 0.2,
+              ease: [0.43, 0.13, 0.23, 0.96],
+            }}
+          >
+            <Image
+              src={`/features/feature-${num}.png`}
+              alt={`Feature ${num}`}
+              width={200}
+              height={200}
+              className="shadow-lg"
+            />
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Content */}
+      <div
+        className="relative z-10 h-full max-w-[70vw] mx-auto flex flex-col justify-center items-center px-6 lg:px-12
+xl:px-16"
+      >
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-display text-hero mb-8 leading-tight text-center text-shadow-lg text-shadow-white"
+        >
+          {dictionary.title}
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-xl md:text-2xl text-text-secondary mb-12 leading-relaxed text-center max-w-2xl"
+        >
+          {dictionary.subtitle}
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+        >
+          <form
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const email = (e.target as HTMLFormElement).email.value;
+              const { country } = await getUserLocation();
+              await submitToNotion({ email, language: lang, country });
+              alert(dictionary.thank_you);
+            }}
+            className="flex flex-col sm:flex-row gap-6"
+          >
+            <input
+              autoComplete="email"
+              id="email"
+              name="email"
+              type="email"
+              required
+              placeholder="example@email.com"
+              className="bg-gray-50 rounded-lg shadow-md border-2 border-gray-500 py-4 px-6 skeuomorphic-input"
+            />
+            <button type="submit" className="hero-button">
+              <div>
+                <span>{dictionary.cta}</span>
+              </div>
+            </button>
+          </form>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
 
 export default function Hero({ lang }: { lang: string }) {
   const t = useTranslations("hero");
+  const logoRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
 
   return (
-    <section className="min-h-screen relative overflow-hidden bg-background">
-      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
-        {/* Left side - Content */}
-        <div className="lg:relative z-10 flex flex-col justify-center px-6 lg:px-12 xl:px-16 lg:py-20">
-          <motion.h1
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-display text-hero mb-8 leading-tight text-center lg:text-left"
-          >
-            {t("title")}
-          </motion.h1>
+    <>
+      <motion.div
+        ref={logoRef}
+        className="fixed z-50 hidden lg:block"
+        style={{
+          top: useTransform(scrollY, [0, 300], ["0px", "24px"]),
+          left: useTransform(scrollY, [0, 300], ["0px", "24px"]),
+          x: useTransform(scrollY, [0, 300], [`calc(61vw)`, "0vw"]),
+          y: useTransform(scrollY, [0, 300], [`calc(35vh)`, "0vh"]),
+          scale: useTransform(scrollY, [0, 300], [3, 1]),
+        }}
+      >
+        <Image
+          src="/logo-full.svg"
+          alt="Logo"
+          width={48}
+          height={48}
+          className="h-12 w-auto"
+        />
+      </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-text-secondary mb-12 leading-relaxed text-center mx-auto lg:text-left"
-          >
-            {t("subtitle")}
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center lg:justify-start lg:items-start"
-          >
-            <form
-              onSubmit={async (e) => {
-                e.preventDefault();
-                const email = (e.target as HTMLFormElement).email.value;
-                const { country } = await getUserLocation();
-                await submitToNotion({ email, language: lang, country });
-                alert(t("thank_you"));
-              }}
-              className="flex flex-col sm:flex-row gap-6"
-            >
-              <input
-                autoComplete="email"
-                id="email"
-                name="email"
-                type="email"
-                required
-                placeholder="example@email.com"
-                className="bg-[#e2e8f0]/50 rounded-lg shadow-md py-4 px-6 skeuomorphic-input"
-              />
-              <button type="submit" className="hero-button translate-y-1">
-                <div>
-                  <span>{t("cta")}</span>
-                </div>
-              </button>
-            </form>
-          </motion.div>
-        </div>
-
-        {/* Right side - Image Background */}
-        <div className="relative block my-14">
-          <div
-            className="absolute inset-0 bg-center bg-contain bg-no-repeat"
-            style={{ backgroundImage: "url('/hero.png')" }}
-          />
-        </div>
-      </div>
-    </section>
+      <section>
+        <Slide
+          title={t("1").title}
+          description={t("1").subtitle}
+          backgroundImage="hero-1.png"
+        />
+        <Slide
+          title={t("2").title}
+          description={t("2").subtitle}
+          backgroundImage="hero-2.png"
+        />
+        <LastSlide dictionary={t("3")} lang={lang} />
+      </section>
+    </>
   );
 }
